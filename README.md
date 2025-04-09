@@ -1,3 +1,6 @@
+Desenvolvido por: Carlos Eduardo Paulino.
+Youtube: https://www.youtube.com/@delphicleancode (se inscreva e compartilhe para receber projetos como este em primeira mão) :-) 
+
 # TSQLBuilder
 Biblioteca de SQL fluente (Fluent SQL Builder) em Object Pascal com compatibilidade para Delphi e Lazarus.
 
