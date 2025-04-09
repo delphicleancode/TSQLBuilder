@@ -1,0 +1,105 @@
+object FormMain: TFormMain
+  Left = 611
+  Height = 645
+  Top = 170
+  Width = 1202
+  Caption = 'SQLBuilder Demo'
+  ClientHeight = 645
+  ClientWidth = 1202
+  DesignTimePPI = 120
+  OnCreate = FormCreate
+  LCLVersion = '3.6.0.0'
+  object pnlTop: TPanel
+    Left = 0
+    Height = 49
+    Top = 0
+    Width = 1202
+    Align = alTop
+    ClientHeight = 49
+    ClientWidth = 1202
+    TabOrder = 0
+    object btnExecute: TButton
+      Left = 640
+      Height = 23
+      Top = 13
+      Width = 105
+      Caption = 'Build SQL'
+      TabOrder = 0
+      OnClick = buildSQL
+    end
+    object cmbExamples: TComboBox
+      Left = 13
+      Height = 28
+      Top = 14
+      Width = 613
+      ItemHeight = 20
+      TabOrder = 1
+      Text = 'cmbExamples'
+      OnClick = buildSQL
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 596
+    Top = 49
+    Width = 625
+    Align = alLeft
+    Caption = 'Panel2'
+    ClientHeight = 596
+    ClientWidth = 625
+    TabOrder = 1
+    object lblRawSQL: TLabel
+      Left = 1
+      Height = 20
+      Top = 1
+      Width = 623
+      Align = alTop
+      Caption = 'Raw SQL:'
+    end
+    object memoSQL: TMemo
+      Left = 1
+      Height = 574
+      Top = 21
+      Width = 623
+      Align = alClient
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Consolas'
+      ParentFont = False
+      ScrollBars = ssBoth
+      TabOrder = 0
+    end
+  end
+  object Panel1: TPanel
+    Left = 625
+    Height = 596
+    Top = 49
+    Width = 577
+    Align = alClient
+    Caption = 'Panel1'
+    ClientHeight = 596
+    ClientWidth = 577
+    TabOrder = 2
+    object lblFormattedSQL: TLabel
+      Left = 1
+      Height = 20
+      Top = 1
+      Width = 575
+      Align = alTop
+      Caption = 'Formatted SQL:'
+    end
+    object memoFormattedSQL: TMemo
+      Left = 1
+      Height = 574
+      Top = 21
+      Width = 575
+      Align = alClient
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Consolas'
+      ParentFont = False
+      ScrollBars = ssBoth
+      TabOrder = 0
+    end
+  end
+end
