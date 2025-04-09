@@ -1,6 +1,10 @@
 # TSQLBuilder
 Biblioteca de SQL fluente (Fluent SQL Builder) em Object Pascal com compatibilidade para Delphi e Lazarus.
-A biblioteca permite construir consultas SQL de forma programática e orientada a objetos, com suporte para diferentes bancos de dados.
+
+# Sobre
+A biblioteca SQLBuilder oferece uma maneira mais segura, legível e manutenível de criar consultas SQL em seus projetos Object Pascal. 
+Através da interface fluente, você pode construir desde consultas simples até operações complexas com múltiplos JOINs, CTEs, transações e migrações de bancos de dados.
+Além disso, a biblioteca tem suporte para diferentes bancos de dados.
 
 # Exemplos de Uso da Biblioteca SQLBuilder
 
@@ -396,9 +400,37 @@ begin
          .AsString
     );
     
-    // Adicionar comandos para índices
+// Adicionar comandos para índices
     Migration.AddCommand(
-      TSQL.CREATE_INDEX('idx_produto_codigo', 'produtos
+      TSQL.CREATE_INDEX('idx_produto_codigo', 'produtos', ['codigo'], True).AsString
+    );
+    
+    Migration.AddCommand(
+      TSQL.CREATE_INDEX('idx_produto_categoria', 'produtos', ['categoria_id']).AsString
+    );
+    
+    // Adicionar comandos para chaves estrangeiras
+    Migration.AddCommand(
+      TSQL.ALTER_TABLE('produtos')
+         .ADD_CONSTRAINT('fk_produto_categoria', 
+                         'FOREIGN KEY (categoria_id) REFERENCES categorias(id)')
+         .AsString
+    );
+    
+    Migration.AddCommand(
+      TSQL.ALTER_TABLE('produtos')
+         .ADD_CONSTRAINT('fk_produto_fornecedor', 
+                         'FOREIGN KEY (fornecedor_id) REFERENCES fornecedores(id)')
+         .AsString
+    );
+    
+    Result := Migration.AsScript;
+  finally
+    Migration.Free;
+  end;
+end;
+```
+
 ## Configuração do Dialeto SQL
 
 A biblioteca SQLBuilder suporta vários bancos de dados, cada um com suas peculiaridades sintáticas. Veja como configurar:
@@ -541,3 +573,4 @@ begin
   
   SQL := Query.AsString;
 end;
+```
